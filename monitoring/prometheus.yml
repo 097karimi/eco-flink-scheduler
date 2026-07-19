@@ -1,0 +1,15 @@
+# monitoring/prometheus.yml
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+  - job_name: "flink-jobmanager"
+    static_configs:
+      - targets: ["jobmanager:9249"]
+
+  - job_name: "flink-taskmanagers"
+    static_configs:
+      - targets:
+          - "taskmanager-small:9249"
+          - "taskmanager-medium:9249"
+          - "taskmanager-large:9249"
